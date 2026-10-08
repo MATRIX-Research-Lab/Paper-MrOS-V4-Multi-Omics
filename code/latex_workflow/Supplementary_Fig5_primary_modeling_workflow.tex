@@ -1,0 +1,65 @@
+% Supplementary Figure 5 -- primary layer-specific modelling workflow.
+%
+% Step text is reproduced verbatim from the figure this replaces; only the
+% drawing is new. The figure carries no title, subtitle or footnote: those
+% belong to the caption in supp.tex, not to the artwork. See workflow-style.tex for the shared styling.
+%
+% Build with code/latex_workflow/run_all.sh (do not run pdflatex here by hand:
+% the script is what puts the PDF where results/figures expects it).
+
+\documentclass[border=6mm]{standalone}
+\input{workflow-style}
+
+\begin{document}
+\begin{tikzpicture}[node distance=0pt]
+
+% Row 1 -------------------------------------------------------------------
+\wfstep{wfSetup}{s1}{at={(0,0)}}{1}{Split once}{%
+  Stratified 80\% development / 20\% test split.\wfsep
+  Lock the test sample before screening, tuning, or stacking.}
+
+\wfstep{wfFit}{s2}{at={($(s1.north east)+(\wfGapX,0)$)}}{2}{Outer cross-fitting}{%
+  Five development folds generate out-of-fold base-model probabilities.\wfsep
+  Each participant is assessed by a model that did not use that participant.}
+
+\wfstep{wfInner}{s3}{at={($(s2.north east)+(\wfGapX,0)$)}}{3}{Inner model design}{%
+  Within each outer analysis set: three-fold tuning.\wfsep
+  In every inner split, limma is fitted only on the inner analysis fold and
+  applied to its assessment fold.}
+
+\wfstep{wfInner}{s4}{at={($(s3.north east)+(\wfGapX,0)$)}}{4}{Outer refit + OOF}{%
+  Choose hyperparameters; rerun limma on the full outer analysis set.\wfsep
+  Fit the base model and predict the untouched outer assessment fold.}
+
+\wfstep{wfFit}{s5}{at={($(s4.north east)+(\wfGapX,0)$)}}{5}{Learn stack}{%
+  Concatenate cross-fitted base probabilities across outer folds.\wfsep
+  Fit ridge-logistic stacking weights using these development-only OOF
+  predictions.}
+
+% Row 2 -------------------------------------------------------------------
+% Two steps rather than five, each carrying more text: wider and shorter.
+\wfsetbox{124mm}{34mm}
+
+\wfstep{wfSetup}{s6}{at={($(s1.south west)+(18mm,-24mm)$)}}{6}{Final base models on all development subjects}{%
+  Run a fresh five-fold tuning exercise within the 80\% development sample;
+  limma is again learned separately in each tuning analysis fold.\wfsep
+  After hyperparameters are chosen, rerun limma once on all 80\% to obtain the
+  final deployable feature set; refit each base model on all 80\%.}
+
+\wfstep{wfFit}{s7}{at={($(s6.north east)+(\wfGapX,0)$)}}{7}{One-time locked-test evaluation}{%
+  Generate final base-model probabilities for the 20\% test sample.\wfsep
+  Apply the fixed ridge stacking coefficients learned from development OOF
+  predictions.\wfsep
+  Compute ROC/AUC with death as the fixed positive event; do not retune or
+  rescreen.}
+
+% Flow --------------------------------------------------------------------
+\foreach \a/\b in {s1/s2, s2/s3, s3/s4, s4/s5}{%
+  \draw[wfarrow] ($(\a.east)+(0,-6mm)$) -- ($(\b.west)+(0,-6mm)$);
+}
+\draw[wfarrow] (s5.south) .. controls ($(s5.south)+(0,-12mm)$) and
+  ($(s7.north)+(0,12mm)$) .. (s7.north);
+\draw[wfarrow] ($(s6.east)+(0,-10mm)$) -- ($(s7.west)+(0,-10mm)$);
+
+\end{tikzpicture}
+\end{document}

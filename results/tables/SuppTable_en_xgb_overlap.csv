@@ -1,0 +1,10 @@
+"omics","top_n","overlap","overlap_pct","concordant","concordant_pct"
+"microbiome",20,2,10,2,100
+"microbiome",50,17,34,13,76.4705882352941
+"microbiome",100,62,62,35,56.4516129032258
+"metabolomics",20,6,30,6,100
+"metabolomics",50,18,36,18,100
+"metabolomics",100,45,45,45,100
+"proteomics",20,12,60,12,100
+"proteomics",50,31,62,31,100
+"proteomics",100,88,88,76,86.3636363636364

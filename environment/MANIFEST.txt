@@ -1,0 +1,12 @@
+MrOS v4 mortality — cluster environment record
+
+captured           : 2026-08-10T22:28:53Z (UTC)
+host               : login-1.zaratan.umd.edu
+kernel             : Linux 4.18.0-553.125.1.el8_10.x86_64
+distribution       : Red Hat Enterprise Linux 8.10 (Ootpa)
+conda prefix       : /home/hlin1239/scratch/conda/envs/r-4.4.3
+conda version      : conda 23.11.0
+R                  : R version 4.4.3 (2025-02-28) -- "Trophy Case"
+git commit         : b56724359759c611a64ce29d6c2fb65d7986fc51
+git branch         : reproducibility-hardening
+git state          : DIRTY — uncommitted changes present
