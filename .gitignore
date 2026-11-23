@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+# local inputs for code/cross_omics (the README says not to commit these)
+code/cross_omics/perm_workspace.RData
+results/tables/cross_omics_blocks.rds
+# macOS Finder files
+.DS_Store
