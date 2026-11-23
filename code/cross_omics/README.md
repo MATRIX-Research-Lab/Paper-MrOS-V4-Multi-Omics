@@ -1,8 +1,8 @@
 # Cross-omics blocks
 
 Finds dense microbiome, metabolite, and protein correlation blocks and draws the
-3-in-1 figures. Permutation scripts estimate whether a block this strong appears
-after the Active / Deceased labels are shuffled.
+cross-omics correlation figures. Permutation scripts estimate whether a block
+this strong appears after the Active / Deceased labels are shuffled.
 
 Everything starts from `perm_workspace.RData` in this directory. That file is
 not in the repository. Build it locally from the three modeling frames written
@@ -59,9 +59,11 @@ PNG output needs the R package `ragg`.
 |---|---|
 | `greedy.R` | peeling algorithm; sourced, not run |
 | `common.R` | loads the workspace and builds the correlation matrices |
-| `plot3in1_v1.R`, `plot3in1_v3.R` | plotting functions |
+| `plot_square_v4.R` | plotting functions for the current figures; sourced by `02` |
+| `plot3in1_v1.R` | colour map and drawing helpers; still sourced by `02` |
+| `plot3in1_v3.R` | plotting functions for the earlier 3-in-1 figures; needed only if that code is re-enabled |
 | `01_find_blocks.R` | observed blocks and cluster-name tables |
-| `02_make_figures.R` | paper figures; run after 01 |
+| `02_make_figures.R` | paper figures; run after 01. Draws the cross-correlation square only; the earlier 3-in-1 code is kept as a comment block at the bottom of the file |
 | `permute_micro_metab.R` | 500 label shuffles, microbiome × metabolomics |
 | `permute_micro_prot.R` | 500 label shuffles, microbiome × proteomics |
 | `permute_metab_prot.R` | 500 label shuffles, metabolomics × proteomics |

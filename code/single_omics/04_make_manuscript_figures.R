@@ -139,6 +139,6 @@ build_figure("Supplementary_Fig2_ensamble_importance.pdf", {
   )
 })
 
-mark_cross_omics_present("Fig5_micro-metab_correlation.pdf.pdf")
-mark_cross_omics_present("Supplementary_Fig3_micro_prot.pdf")
-mark_cross_omics_present("Supplementary_Fig4_meta_prot.pdf")
+mark_cross_omics_present("Fig5_micro-metab_correlation_square.pdf")
+mark_cross_omics_present("Supplementary_Fig3_micro_prot_square.pdf")
+mark_cross_omics_present("Supplementary_Fig4_meta_prot_square.pdf")

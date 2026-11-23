@@ -228,9 +228,9 @@ assert_modeling_api <- function() {
 # run_all.R only confirms these survived the render, so results/ cannot quietly
 # lose them the way it once did.
 cross_omics_artifacts <- c(
-  "Fig5_micro-metab_correlation.pdf.pdf",
-  "Supplementary_Fig3_micro_prot.pdf",
-  "Supplementary_Fig4_meta_prot.pdf"
+  "Fig5_micro-metab_correlation_square.pdf",
+  "Supplementary_Fig3_micro_prot_square.pdf",
+  "Supplementary_Fig4_meta_prot_square.pdf"
 )
 
 latex_artifacts <- c(
@@ -249,11 +249,11 @@ expected_artifacts <- c(
   "Fig2_roc.pdf",
   "Fig3_bubble_omics.pdf",
   "Fig4_bubble_ensamble.pdf",
-  "Fig5_micro-metab_correlation.pdf.pdf",
+  "Fig5_micro-metab_correlation_square.pdf",
   "Supplementary_Fig1_omics_importance.pdf",
   "Supplementary_Fig2_ensamble_importance.pdf",
-  "Supplementary_Fig3_micro_prot.pdf",
-  "Supplementary_Fig4_meta_prot.pdf",
+  "Supplementary_Fig3_micro_prot_square.pdf",
+  "Supplementary_Fig4_meta_prot_square.pdf",
   "Table1.pdf",
   "Table1.docx",
   "Table2_AUC_CI.pdf",

@@ -128,10 +128,15 @@ df_status_prot.rds           ed6dbd08d3a75a41c836a0308f076deb
 
 ## Cross-omics figures and cluster tables
 
-`Fig5_micro-metab_correlation.pdf.pdf`, `Supplementary_Fig3_micro_prot.pdf` and
-`Supplementary_Fig4_meta_prot.pdf` are produced by
+`Fig5_micro-metab_correlation_square.pdf`,
+`Supplementary_Fig3_micro_prot_square.pdf` and
+`Supplementary_Fig4_meta_prot_square.pdf` are produced by
 `code/cross_omics/02_make_figures.R`. `code/single_omics/run_all.R` never
 regenerates them; it only confirms they are still present in `results/figures/`.
+The earlier 3-in-1 versions (`Fig5_micro-metab_correlation.pdf.pdf`,
+`Supplementary_Fig3_micro_prot.pdf`, `Supplementary_Fig4_meta_prot.pdf`) remain
+in `results/figures/` for reference. No script regenerates them unless the
+commented block at the bottom of `02_make_figures.R` is re-enabled.
 
 ```bash
 Rscript code/cross_omics/01_find_blocks.R
